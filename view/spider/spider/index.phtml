@@ -1,0 +1,33 @@
+<?php
+// module/Spider/view/Spider/Spider/index.phtml:
+$title = 'My Spiders';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+<a href="<?php echo $this->url('spider', array('action'=>'add'));?>">Add new Spider</a>
+</p>
+<table class="table">
+<tr>
+<th>Url</th>
+<th>Server response</th>
+<th>Page load time</th>
+<th>Page size</th>
+<th>Date scan</th>
+<th>&nbsp;</th>
+</tr>
+<?php foreach ($spiders as $spider) : ?>
+<tr>
+<td><?php echo $this->escapeHtml($spider->url);?></td>
+<td><?php echo $this->escapeHtml($spider->server_response);?></td>
+<td><?php echo $this->escapeHtml($spider->page_load_time);?></td>
+<td><?php echo $this->escapeHtml($spider->page_size);?></td>
+<td><?php echo $this->escapeHtml($spider->date_scan);?></td>
+
+<td>
+<a href="<?php echo $this->url('spider',array('action'=>'edit', 'id' => $spider->id));?>">Edit</a>
+<a href="<?php echo $this->url('spider',array('action'=>'delete', 'id' => $spider->id));?>">Delete</a>
+</td>
+</tr>
+<?php endforeach; ?>
+</table>

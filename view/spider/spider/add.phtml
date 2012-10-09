@@ -1,0 +1,15 @@
+<?php
+$title = 'Add new URL';
+$this->headTitle($title);
+if ($this->urlspider!='') echo 'Url saved';
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('spider', array('action' => 'add')));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('url'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

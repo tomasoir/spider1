@@ -1,0 +1,19 @@
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+'spider',
+array(
+'action' => 'edit',
+'id' => $this->id,
+)
+));
+$form->prepare();
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('url'));
+echo $this->formRow($form->get('server_response'));
+echo $this->formRow($form->get('page_load_time'));
+echo $this->formRow($form->get('page_size'));
+//echo $this->formRow($form->get('date_scan'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
